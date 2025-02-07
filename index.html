@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ChatBot</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">  <!-- Link to the external CSS -->
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="modelDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ChatBot
+                </button>
+                <div class="dropdown-menu" aria-labelledby="modelDropdown">
+                    <a class="dropdown-item" href="#" id="geminiModel">Gemini</a>
+                    <a class="dropdown-item" href="#" id="groqModel">Groq</a>
+                </div>
+            </div>
+            <div class="reset-icon" id="resetChat" title="New chat">⟲</div> <!-- Reset Icon -->
+        </div>
+        <!-- Chat Box -->
+        <div class="chat-box" id="chatBox"></div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea id="userInput" placeholder="Message ChatBot" rows="1"></textarea>
+                <button id="sendButton" class="send-btn" disabled>➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Footer -->
+    <footer>
+        <p>This ChatBot is for demonstration purposes only.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> <!-- Add this -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Add this -->
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+    <script src="script.js"></script>  <!-- Your script file -->
+</html>
