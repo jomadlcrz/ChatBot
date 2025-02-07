@@ -103,7 +103,7 @@ const sendMessage = () => {
   const { signal } = abortController;
 
   // Send the conversation history and selected model to the backend
-  fetch('http://localhost:3000/chat', { // http://localhost:3000/chat or backend URL
+  fetch('https://chatbot-server-psaq.onrender.com', { // http://localhost:3000/chat or backend URL
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
