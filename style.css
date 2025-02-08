@@ -99,6 +99,9 @@ textarea {
     margin-top: 8px;
     position: relative; /* Ensure it serves as the positioning reference */
     user-select: none; /* Prevents text selection */
+}
+
+.send-btn:focus {
     outline: none;
 }
 
