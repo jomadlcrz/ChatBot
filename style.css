@@ -7,8 +7,8 @@
 body, html {
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #1a1a1a; /* Dark background */
-    color: #e0e0e0; /* Light text color */
+    background-color: #ffffff; /* Light background */
+    color: #333; /* Dark text color */
 }
 
 /* Custom Scrollbar Styling */
@@ -18,17 +18,17 @@ body, html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: #007bff;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #333;
+    background-color: #f5f5f5;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #888;
+    background-color: #0056b3;
 }
 
 /* Fixed Header */
@@ -37,8 +37,8 @@ body, html {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background: #1a1a1a; /* Dark header */
-    color: white;
+    background: #ffffff; /* Light header */
+    color: #333;
     position: fixed;
     top: 0;
     left: 0;
@@ -55,6 +55,8 @@ body, html {
 .input-area {
     position: fixed;
     bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -64,9 +66,9 @@ body, html {
     display: flex;
     align-items: flex-end;
     border-radius: 20px;
-    background: #333; /* Dark background for input */
+    background: #fff; /* Light background for input */
     padding: 8px 12px;
-    border: 1px solid #555;
+    border: 1px solid #ccc;
     position: relative;
     width: 100%;
     max-width: 800px;
@@ -75,15 +77,14 @@ body, html {
 
 textarea {
     width: 100%;
-    min-height: 80px;
-    max-height: 150px;
+    min-height: 100px;
+    max-height: 250px;
     overflow-y: auto;
     resize: none;
     border: none;
     background: transparent;
-    font-size: 18px;
     outline: none;
-    color: #e0e0e0; /* Light text for input */
+    color: #333; /* Dark text for input */
 }
 
 .send-btn {
@@ -96,6 +97,8 @@ textarea {
     font-size: 16px;
     transition: 0.3s;
     margin-top: 8px;
+    position: relative; /* Ensure it serves as the positioning reference */
+    user-select: none; /* Prevents text selection */
 }
 
 .send-btn:hover {
@@ -103,8 +106,57 @@ textarea {
 }
 
 .send-btn:disabled {
-    background: #666;
+    background: #ddd;
     cursor: not-allowed;
+}
+
+@media (hover: hover) {
+    .send-btn:not(:disabled)::after {
+        content: "Send Message"; /* Tooltip text */
+        position: absolute;
+        top: -35px; /* Moves tooltip above the button */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Ensures perfect centering */
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition-delay: 0.5s; /* Delay before showing */
+        pointer-events: none;
+    }
+
+    .send-btn:not(:disabled):hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px); /* Smooth upward transition */
+    }
+
+    .send-btn:disabled::after {
+        content: "Message is empty"; /* Tooltip text for disabled state */
+        position: absolute;
+        top: -35px; /* Moves tooltip above the button */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Ensures perfect centering */
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+    }
+
+    .send-btn:disabled:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-5px); /* Smooth upward transition */
+    }
+    .send-btn:not(:disabled):not(:hover)::after {
+        transition-delay: 0s; /* No delay for hiding */
+    }
 }
 
 /* Chat Box */
@@ -122,7 +174,7 @@ textarea {
     flex: 1;
     overflow-y: auto;
     padding: 15px;
-    background-color: #1a1a1a; /* Dark background for chat */
+    background-color: #ffffff; /* Light background for chat */
     margin-bottom: 20px;
 }
 
@@ -136,12 +188,12 @@ textarea {
 }
 
 .user-message {
-    background: #333; /* Slightly lighter dark for user messages */
+    background: #f0f0f0; /* Light background for user messages */
     margin-left: auto;
 }
 
 .bot-message {
-    background: none; /* Darker background for bot messages */
+    background: none; /* Slightly darker background for bot messages */
     margin-right: auto;
 }
 
@@ -198,8 +250,8 @@ footer {
     bottom: 0;
     width: 100%;
     text-align: center;
-    font-size: 14px;
-    color: #555;
+    font-size: 12px;
+    color: #777;
 }
 
 footer p {
@@ -210,51 +262,69 @@ footer p {
 .header .dropdown-toggle {
     background: transparent;
     border: none;
-    color: white;
+    color: #333;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .header .dropdown-toggle:hover {
-    background: #2F2F2F;
+    background: #ddd;
 }
 
 .dropdown-menu {
-    background: #333; /* Dark dropdown background */
+    background: #fff; /* Light dropdown background */
     border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
-    color: white;
+    color: #333;
     font-size: 16px;
     cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background-color: #555;
+    background-color: #eee;
 }
 
 .reset-icon {
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    right: 20px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    position: absolute;
+    right: 20px;
+    border: 1px solid #ccc;
     padding: 8px;
-    border: 1px solid transparent;
     border-radius: 8px;
-    transition: none;
-    -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+    user-select: none;
 }
 
-@media (hover: hover) { 
-    /* Only applies hover effect on devices that support hovering (desktops) */
-    .reset-icon:hover {
-        border: 1px solid #555;
+@media (hover: hover) {
+    .reset-icon::after {
+        content: "New chat"; /* Tooltip text */
+        position: absolute;
+        bottom: -30px; /* Moves tooltip below the icon */
+        left: 30%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition-delay: 0.5s; /* Delay before showing */
+        pointer-events: none;
+    }
+
+    .reset-icon:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px); /* Smooth downward transition */
+    }
+    .reset-icon:not(:disabled):not(:hover)::after {
+        transition-delay: 0s; /* No delay for hiding */
     }
 }
 
@@ -262,12 +332,11 @@ footer p {
 .reset-icon:focus,  
 .reset-icon:active {
     outline: none;
-    border: 1px solid transparent !important;
 }
 
 /* Error Message Styling */
 .error-message {
-    background: #ff6666;
+    background: #ffebee;
     color: #cc0000;
     border-left: 5px solid #cc0000;
     padding: 12px;
@@ -292,7 +361,7 @@ footer p {
 
 /* Code Block Styling */
 pre, code {
-    background-color: #333; /* Dark background for code blocks */
+    background-color: #444;
     border-radius: 8px;
     color: #e0e0e0;
     padding: 10px;
@@ -314,4 +383,140 @@ pre {
 pre span.highlight {
     background-color: #444;
     color: #FFEB3B;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+    position: absolute;
+    left: 20px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 8px;
+    user-select: none;
+}
+
+@media (hover: hover) {
+    .dark-mode-toggle::after {
+        content: "Dark"; /* Default tooltip text */
+        position: absolute;
+        bottom: -30px; /* Moves tooltip below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+    }
+
+    .dark-mode-toggle:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
+
+    .dark-mode .dark-mode-toggle::after {
+        content: "Light"; /* Changes to Light when in dark mode */
+    }
+}
+
+/* WebKit Scrollbar Dark Mode */
+.dark-mode ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background-color: #222;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #181818;
+    color: #e0e0e0;
+}
+
+/* Dark Mode */
+.dark-mode .header {
+    background: #181818; /* Dark header */
+    color: #fff;
+}
+
+.dark-mode .header .dropdown-toggle {
+    color: #fff;
+}
+
+.dark-mode .header .dropdown-toggle:hover {
+    background: #444;
+}
+
+.dark-mode .dropdown-menu {
+    background: #333; /* Dark dropdown background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .dropdown-item {
+    color: #fff;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: #444;
+}
+
+
+.dark-mode .input-wrapper {
+    background: #222;
+    border-color: #444;
+}
+
+.dark-mode textarea {
+    color: #e0e0e0;
+}
+
+/* Dark Mode - Send Button */
+.dark-mode .send-btn {
+    background: #007bff;
+    color: #ddd;
+}
+
+.dark-mode .send-btn:hover {
+    background: #0056b3;
+}
+
+.dark-mode .send-btn:disabled {
+    background: #333;
+    color: #777;
+}
+
+.dark-mode .chat-box {
+    background: #181818;
+}
+
+.dark-mode .user-message {
+    background: #333;
+}
+
+.dark-mode .bot-message {
+    background: none;
+}
+
+.dark-mode footer {
+    background: #181818;
+    color: #888;
 }

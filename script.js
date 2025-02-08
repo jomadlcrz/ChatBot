@@ -3,6 +3,28 @@ const geminiModel = document.getElementById('geminiModel');
 const groqModel = document.getElementById('groqModel');
 const modelDropdown = document.getElementById('modelDropdown'); // Dropdown to show selected model
 
+document.addEventListener("DOMContentLoaded", function () {
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const body = document.body;
+
+  // Load theme from localStorage
+  if (localStorage.getItem("darkMode") === "enabled") {
+      body.classList.add("dark-mode");
+      darkModeToggle.textContent = "☀️"; // Light mode icon
+  }
+
+  darkModeToggle.addEventListener("click", function () {
+      body.classList.toggle("dark-mode");
+      if (body.classList.contains("dark-mode")) {
+          localStorage.setItem("darkMode", "enabled");
+          darkModeToggle.textContent = "☀️"; // Change to light mode icon
+      } else {
+          localStorage.setItem("darkMode", "disabled");
+          darkModeToggle.textContent = "🌙"; // Change to dark mode icon
+      }
+  });
+});
+
 // Load the selected model from localStorage (if it exists), default to 'gemini'
 let selectedModel = localStorage.getItem('selectedModel') || 'gemini'; 
 
@@ -84,7 +106,7 @@ const sendMessage = () => {
   if (!message) return;
   addMessage(message, 'user');
   userInput.value = '';
-  userInput.style.height = "80px"; // Adjusted height
+  userInput.style.height = "100px"; // Adjusted height
   sendButton.disabled = true;
 
   // Add the user message to the conversation history
@@ -103,7 +125,7 @@ const sendMessage = () => {
   const { signal } = abortController;
 
   // Send the conversation history and selected model to the backend
-  fetch('https://chatbot-server-psaq.onrender.com/chat', { // http://localhost:3000/chat or backend URL
+  fetch('http://localhost:3000/chat', { // http://localhost:3000/chat or backend URL sample https://example.com/chat
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -169,8 +191,8 @@ displayWelcomeMessageIfNeeded();
 
 // Handle user input
 userInput.addEventListener('input', () => {
-  userInput.style.height = "80px"; // Adjusted height for better input area
-  userInput.style.height = Math.min(userInput.scrollHeight, 150) + "px";
+  userInput.style.height = "100px"; // Adjusted height for better input area
+  userInput.style.height = Math.min(userInput.scrollHeight, 250) + "px";
   sendButton.disabled = !userInput.value.trim();
 });
 
