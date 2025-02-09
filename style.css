@@ -522,6 +522,6 @@ pre span.highlight {
 }
 
 .dark-mode footer {
-    background: #181818;
+    background: none;
     color: #888;
 }
