@@ -305,24 +305,11 @@ footer p {
     user-select: none;
 }
 
-@media (hover: hover) {
-    .reset-icon::after {
-        content: "New chat"; /* Tooltip text */
-        position: absolute;
-        bottom: -30px; /* Moves tooltip below the icon */
-        left: 30%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 5px 8px;
-        border-radius: 5px;
-        font-size: 12px;
-        white-space: nowrap;
-        opacity: 0;
-        transition-delay: 0.5s; /* Delay before showing */
-        pointer-events: none;
-    }
+.dark-mode .reset-icon {
+    border: 1px solid #444;
+}
 
+@media (hover: hover) {
     .reset-icon:hover::after {
         opacity: 1;
         transform: translateX(-50%) translateY(5px); /* Smooth downward transition */
@@ -365,11 +352,21 @@ footer p {
 
 /* Code Block Styling */
 pre, code {
-    background-color: #444;
+    background-color: #f6f6f6;
     border-radius: 8px;
-    color: #e0e0e0;
+    color: #000000;
     padding: 10px;
     font-family: "Courier New", Courier, monospace;
+}
+
+.dark-mode pre,
+.dark-mode code {
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+}
+
+.dark-mode pre {
+    border: 1px solid #444;
 }
 
 /* Inline Code */
@@ -381,6 +378,7 @@ code {
 /* Syntax Highlighting */
 pre {
     margin: 10px 0;
+    border: 1px solid #ccc;
 }
 
 /* For highlighting special characters or words */
@@ -397,7 +395,6 @@ pre span.highlight {
     margin-right: 20px;
     position: absolute;
     left: 20px;
-    border: 1px solid #ccc;
     padding: 8px;
     border-radius: 8px;
     user-select: none;
