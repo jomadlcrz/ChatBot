@@ -101,6 +101,10 @@ textarea {
     user-select: none; /* Prevents text selection */
 }
 
+.send-btn:focus {
+    outline: none;
+}
+
 .send-btn:hover {
     background: #0056b3;
 }
@@ -397,6 +401,10 @@ pre span.highlight {
     padding: 8px;
     border-radius: 8px;
     user-select: none;
+}
+
+.dark-mode-toggle:focus {
+    outline: none;
 }
 
 @media (hover: hover) {
