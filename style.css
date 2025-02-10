@@ -306,6 +306,7 @@ footer p {
 }
 
 .dark-mode .reset-icon {
+    background: #222;
     border: 1px solid #444;
 }
 
@@ -352,7 +353,7 @@ footer p {
 
 /* Code Block Styling */
 pre, code {
-    background-color: #f6f6f6;
+    background-color: #f0f0f0;
     border-radius: 8px;
     color: #000000;
     padding: 10px;
@@ -361,7 +362,7 @@ pre, code {
 
 .dark-mode pre,
 .dark-mode code {
-    background-color: #0d0d0d;
+    background-color: #333;
     color: #e0e0e0;
 }
 
@@ -388,16 +389,22 @@ pre span.highlight {
 }
 
 /* Dark Mode Toggle */
-.dark-mode-toggle {
+#darkModeToggle {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     margin-right: 20px;
     position: absolute;
+    border: 1px solid #ccc;
     left: 20px;
     padding: 8px;
     border-radius: 8px;
     user-select: none;
+}
+
+.dark-mode #darkModeToggle {
+    background: #222;
+    border: 1px solid #444;
 }
 
 .dark-mode-toggle:focus {
