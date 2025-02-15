@@ -101,10 +101,6 @@ textarea {
     user-select: none; /* Prevents text selection */
 }
 
-.send-btn i {
-    font-size: 20px;
-}
-
 .send-btn:focus {
     outline: none;
 }
