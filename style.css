@@ -90,7 +90,7 @@ textarea {
 .send-btn {
     background: #007bff;
     border: none;
-    color: white;
+    color: black;
     padding: 8px 14px;
     border-radius: 50%;
     cursor: pointer;
@@ -99,6 +99,10 @@ textarea {
     margin-top: 8px;
     position: relative; /* Ensure it serves as the positioning reference */
     user-select: none; /* Prevents text selection */
+}
+
+.send-btn i {
+    font-size: 24px;
 }
 
 .send-btn:focus {
@@ -116,7 +120,7 @@ textarea {
 
 @media (hover: hover) {
     .send-btn:not(:disabled)::after {
-        content: "Send Message"; /* Tooltip text */
+        content: "Send"; /* Tooltip text */
         position: absolute;
         top: -35px; /* Moves tooltip above the button */
         left: 50%; /* Center horizontally */
@@ -306,7 +310,7 @@ footer p {
 }
 
 .reset-icon:hover {
-    color: #007bff;
+    color: #0056b3;
 }
 
 @media (pointer: coarse) {
@@ -413,13 +417,23 @@ pre span.highlight {
 /* Dark Mode Toggle */
 #darkModeToggle {
     cursor: pointer;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     margin-right: 20px;
     position: absolute;
     left: 20px;
     padding: 8px;
     user-select: none;
+}
+
+#darkModeToggle:hover {
+    color: #0056b3;
+}
+
+@media (pointer: coarse) {
+    #darkModeToggle:hover {
+        color: inherit; /* Remove hover effect on touch devices */
+    }
 }
 
 .dark-mode-toggle:focus {

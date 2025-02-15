@@ -7,6 +7,8 @@
     <title>ChatBot</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">  <!-- Link to the external CSS -->
 </head>
 <body>
@@ -22,8 +24,14 @@
                     <a class="dropdown-item" href="#" id="groqModel">Groq</a>
                 </div>
             </div>
-            <div class="dark-mode-toggle" id="darkModeToggle">🌙</div> <!-- Dark Mode Toggle -->
-            <div class="reset-icon" id="resetChat">↻</div> 
+            <div class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i> <!-- Dark mode icon -->
+            </div>
+            
+            <div class="reset-icon" id="resetChat">
+                <i class="fa-solid fa-message"></i>
+            </div>
+            
         </div>
         <!-- Chat Box -->
         <div class="chat-box" id="chatBox"></div>
@@ -32,7 +40,10 @@
         <div class="input-area">
             <div class="input-wrapper">
                 <textarea id="userInput" placeholder="Message ChatBot" rows="1"></textarea>
-                <button id="sendButton" class="send-btn" disabled>➤</button>
+                <button id="sendButton" class="send-btn" disabled>
+                    <i class="fas fa-arrow-up"></i> <!-- Upward arrow icon -->
+                </button>
+                
             </div>
         </div>
     </div>
