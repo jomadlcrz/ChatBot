@@ -1,15 +1,10 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 dotenv.config();
-import express from 'express';
-import path from 'path';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import Groq from 'groq-sdk/index.mjs';
-import cors from 'cors';
-import { fileURLToPath } from 'url';
-
-// Get the current directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const express = require('express');
+const path = require('path');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const Groq = require('groq-sdk');
+const cors = require('cors');
 
 // Validate environment variables
 if (!process.env.GEMINI_API_KEY && !process.env.GROQ_API_KEY) {
@@ -36,7 +31,7 @@ app.get('/', (req, res) => {
 
 // Endpoint to handle the chat request from the frontend
 app.post('/chat', async (req, res) => {
-  const { messages, api } = req.body; // Expecting the api key to be passed (gemini or groq)
+  const { messages, api } = req.body;
 
   if (!messages || messages.length === 0) {
     return res.status(400).json({ error: 'No messages provided' });
@@ -46,15 +41,13 @@ app.post('/chat', async (req, res) => {
     let botResponse = "";
 
     if (api === 'gemini' && geminiModel) {
-      // Use Gemini API
       const prompt = messages.map((msg) => `${msg.role}: ${msg.content}`).join('\n');
       const result = await geminiModel.generateContent(prompt);
       botResponse = result.response.text();
     } else if (api === 'groq' && groq) {
-      // Use Groq API
       const chatCompletion = await groq.chat.completions.create({
         model: 'llama3-8b-8192', // Adjust with the model you want to use
-        messages: messages, // Pass the conversation history
+        messages: messages,
       });
       botResponse = chatCompletion.choices[0]?.message?.content || "Sorry, I couldn't process the request.";
     } else {

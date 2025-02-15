@@ -125,7 +125,7 @@ const sendMessage = () => {
   const { signal } = abortController;
 
   // Send the conversation history and selected model to the backend
-  fetch('https://chatbot-ar7c.onrender.com/chat', { // http://localhost:3000/chat or backend URL sample https://example.com/chat
+  fetch('https://server-alpha-lilac.vercel.app/chat', { // http://localhost:3000/chat or backend URL sample https://example.com/chat
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

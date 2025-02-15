@@ -23,7 +23,7 @@ body, html {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
+    background-color: #ccc;
     border-radius: 10px;
 }
 
@@ -295,23 +295,44 @@ footer p {
 
 .reset-icon {
     cursor: pointer;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     margin-left: 20px;
     position: absolute;
     right: 20px;
-    border: 1px solid #ccc;
     padding: 8px;
     border-radius: 8px;
     user-select: none;
 }
 
-.dark-mode .reset-icon {
-    background: #222;
-    border: 1px solid #444;
+.reset-icon:hover {
+    color: #007bff;
+}
+
+@media (pointer: coarse) {
+    .reset-icon:hover {
+        color: inherit; /* Remove hover effect on touch devices */
+    }
 }
 
 @media (hover: hover) {
+    .reset-icon::after {
+        content: "New chat"; /* Tooltip text */
+        position: absolute;
+        bottom: -30px; /* Moves tooltip below the icon */
+        left: 30%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition-delay: 0.5s; /* Delay before showing */
+        pointer-events: none;
+    }
+
     .reset-icon:hover::after {
         opacity: 1;
         transform: translateX(-50%) translateY(5px); /* Smooth downward transition */
@@ -396,16 +417,9 @@ pre span.highlight {
     font-weight: bold;
     margin-right: 20px;
     position: absolute;
-    border: 1px solid #ccc;
     left: 20px;
     padding: 8px;
-    border-radius: 8px;
     user-select: none;
-}
-
-.dark-mode #darkModeToggle {
-    background: #222;
-    border: 1px solid #444;
 }
 
 .dark-mode-toggle:focus {
@@ -452,7 +466,7 @@ pre span.highlight {
 }
 
 .dark-mode ::-webkit-scrollbar-track {
-    background-color: #222;
+    background-color: #555;
 }
 
 .dark-mode ::-webkit-scrollbar-thumb:hover {
