@@ -67,27 +67,112 @@ const chatBox = document.getElementById('chatBox'),
   sendButton = document.getElementById('sendButton');
 
 // Initialize markdown-it
-const md = new markdownit({ breaks: true, html: false });
+
+const addMessage = (content, sender) => {
+  let msg = document.createElement('div');
+  msg.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+
+  if (sender === 'user') {
+    // Replace newlines with <br> tags for user messages
+    msg.innerHTML = content.replace(/\n/g, '<br>');
+  } else {
+    // Render Markdown for bot messages
+    const normalizedContent = content.replace(/\n{2,}/g, '\n'); // Normalize multiple newlines
+    msg.innerHTML = md.render(normalizedContent);
+
+    // Add copy label and button to each code block
+    msg.querySelectorAll('pre code').forEach((codeBlock) => {
+      // Create a container for the label and copy button
+      const codeContainer = document.createElement('div');
+      codeContainer.classList.add('code-container');
+
+      // Extract the language from the code block's class
+      const languageClass = Array.from(codeBlock.classList).find(cls => cls.startsWith('language-'));
+      const language = languageClass ? languageClass.replace('language-', '') : 'Code';
+
+      // Create the label
+      const label = document.createElement('div');
+      label.classList.add('code-label');
+      label.textContent = language; // Set the label to the detected language
+
+      // Create the copy button
+      const copyButton = document.createElement('button');
+      copyButton.classList.add('copy-code-btn');
+      copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy'; // Font Awesome copy icon + text
+      copyButton.title = 'Copy code';
+
+      // Append label and copy button to the container
+      codeContainer.appendChild(label);
+      codeContainer.appendChild(copyButton);
+
+      // Wrap the code block in the container
+      codeBlock.parentNode.insertBefore(codeContainer, codeBlock);
+      codeContainer.appendChild(codeBlock);
+
+      // Initialize Clipboard.js for this button
+      const clipboard = new ClipboardJS(copyButton, {
+        text: () => codeBlock.textContent,
+      });
+
+      // Change button text and icon on successful copy
+      clipboard.on('success', (e) => {
+        e.clearSelection();
+        copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!'; // Change to checkmark and "Copied!"
+        setTimeout(() => {
+          copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy'; // Revert to original state
+        }, 2000); // Revert after 2 seconds
+      });
+
+      clipboard.on('error', (e) => {
+        console.error('Failed to copy text:', e.action);
+      });
+    });
+  }
+
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+};
+
+const md = window.markdownit({
+  breaks: true, // Preserve single newlines as <br> tags
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre><code class="hljs language-' + lang + '">' + 
+          hljs.highlight(str, { language: lang }).value + 
+          '</code></pre>';
+      } catch (__) {}
+    }
+    return '<pre><code class="hljs">' + md.utils.escapeHtml(str) + '</code></pre>';
+  }
+});
+// Function to render markdown in chat
+function renderMarkdown(text) {
+  return md.render(text);
+}
+
+// Example usage: Convert user or bot response with Markdown
+function addMessageToChat(message, isBot = false) {
+  const chatBox = document.getElementById("chatBox");
+  const messageElement = document.createElement("div");
+  messageElement.classList.add("chat-message", isBot ? "bot" : "user");
+  
+  messageElement.innerHTML = renderMarkdown(message);
+  chatBox.appendChild(messageElement);
+
+  // Re-run highlight.js after adding content
+  document.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightElement(block);
+  });
+}
+
 
 // Keep track of the conversation history for continuous conversation
 let conversationHistory = [];
 let abortController; // Declare AbortController
 
 // Function to add message with Markdown parsing (except for user messages)
-const addMessage = (content, sender) => {
-  let msg = document.createElement('div');
-  msg.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
 
-  if (sender === 'user') {
-    msg.textContent = content; // User message: plain text (no markdown rendering)
-  } else {
-    const normalizedContent = content.replace(/\n{2,}/g, '\n'); // Converts multiple \n\n\n to a single \n
-    msg.innerHTML = md.render(normalizedContent);
-  }
-
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-};
 
 // Function to load chat history from local storage
 const loadChatHistory = () => {
