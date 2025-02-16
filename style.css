@@ -448,7 +448,7 @@ code {
 /* Change background color for code blocks */
 .hljs {
     background-color: #F9F9F9; /* Dark theme background */
-    color: #ffffff; /* Text color */
+    color: black; /* Text color */
     padding: 10px;
     border-radius: 0 0 5px 5px;
     display: block;
@@ -461,7 +461,6 @@ code {
   
   /* Customize the text color for different tokens */
   .hljs-keyword { color: #ff79c6; } /* Keywords */
-  .hljs-string { color: #f1fa8c; } /* Strings */
   .hljs-comment { color: #6272a4; } /* Comments */
   .hljs-number { color: #bd93f9; } /* Numbers */
   
