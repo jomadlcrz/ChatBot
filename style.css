@@ -7,8 +7,6 @@
 body, html {
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Light background */
-    color: #333; /* Dark text color */
 }
 
 /* Custom Scrollbar Styling */
@@ -383,44 +381,46 @@ code {
     font-size: 14px;
 }
 
+/* Code Container */
 .code-container {
     position: relative;
-    background: #F9F9F9; /* Dark background for code block */
+    background: #ccc; /* Light background for code block */
     border-radius: 8px;
     margin: 1rem 0;
     padding-top: 40px; /* Space for the label and button */
-    border: 1px solid #ccc;
-  }
+    border: 1px solid #ccc; /* Consistent border */
+    overflow: hidden; /* Ensures border-radius is applied correctly */
+}
 
-  .dark-mode .code-container {
-    border: 1px solid;
+.dark-mode .code-container {
     background-color: #1E1E1E; /* Dark theme background */
-  }
+    border-color: #444; /* Darker border for dark mode */
+}
 
-  .dark-mode .code-label,
-  .dark-mode .copy-code-btn {
-    color: white;
-  }
-  
-  .code-label {
+.code-label {
     position: absolute;
     top: 0;
     left: 0;
     padding: 8px 12px;
-    background: none; /* Slightly lighter background for the label */
-    color: #ccc;
+    background: none; /* Light background for the label */
+    color: #333; /* Dark text for the label */
     font-size: 0.9rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-  }
-  
-  .copy-code-btn {
+}
+
+.dark-mode .code-label {
+    background: none; /* Dark background for the label */
+    color: #fff; /* Light text for the label */
+}
+
+.copy-code-btn {
     position: absolute;
     top: 0;
     right: 0;
     padding: 8px 12px;
-    background: none; /* Match label background */
-    color: #ccc;
+    background: none; /* Light background for the button */
+    color: #333; /* Dark text for the button */
     border: none;
     border-top-right-radius: 8px;
     cursor: pointer;
@@ -429,19 +429,42 @@ code {
     align-items: center;
     gap: 6px;
     transition: background 0.2s;
-  }
+}
 
-  .copy-code-btn:focus,
-  .copy-code-btn:active {
+.dark-mode .copy-code-btn {
+    background: none; /* Dark background for the button */
+    color: #fff; /* Light text for the button */
+}
+
+.copy-code-btn:focus,
+.copy-code-btn:active {
     outline: none;
-  }
-  
-  
+}
 
-  
-  .copy-code-btn i {
-    font-size: 0.9rem;
-  }
+
+
+/* Syntax Highlighting (HLJS) */
+.hljs {
+    display: block;
+    padding: 12px;
+    background: #F9F9F9; /* Light background for code block */
+    color: #333; /* Light text color */
+    border-radius: 0 0 8px 8px; /* Rounded corners at the bottom */
+    overflow-x: auto;
+    border: none; /* Remove any default border */
+}
+
+.dark-mode .hljs {
+    background: #1E1E1E; /* Dark background for code block */
+    color: #e0e0e0; /* Light text color */
+}
+
+/* Customize the text color for different tokens */
+.hljs-keyword { color: #007bff; } /* Keywords */
+.hljs-comment { color: #6c757d; } /* Comments */
+.hljs-number { color: #28a745; } /* Numbers */
+.hljs-string { color: #dc3545; } /* Strings */
+.hljs-title { color: #17a2b8; } /* Titles (e.g., function names) */
   
   pre code {
     display: block;
