@@ -408,7 +408,7 @@ code {
     left: 0;
     padding: 8px 12px;
     background: none; /* Slightly lighter background for the label */
-    color: black;
+    color: #ccc;
     font-size: 0.9rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -420,7 +420,7 @@ code {
     right: 0;
     padding: 8px 12px;
     background: none; /* Match label background */
-    color: black;
+    color: #ccc;
     border: none;
     border-top-right-radius: 8px;
     cursor: pointer;
@@ -430,6 +430,12 @@ code {
     gap: 6px;
     transition: background 0.2s;
   }
+
+  .copy-code-btn:focus,
+  .copy-code-btn:active {
+    outline: none;
+  }
+  
   
 
   
