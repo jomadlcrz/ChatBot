@@ -188,6 +188,13 @@ textarea {
     max-width: 75%;
     word-wrap: break-word;
     white-space: pre-wrap;
+    width: fit-content;
+}
+
+@media (max-width: 600px) {
+    .message {
+        max-width: 90vw;
+    }
 }
 
 .user-message {
