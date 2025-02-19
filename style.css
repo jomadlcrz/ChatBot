@@ -184,7 +184,6 @@ textarea {
 .message {
     margin-bottom: 12px;
     padding: 12px;
-    border-radius: 10px;
     max-width: 75%;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -200,7 +199,7 @@ textarea {
 .user-message {
     background: #f0f0f0; /* Light background for user messages */
     margin-left: auto;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .bot-message {
@@ -228,7 +227,7 @@ textarea {
     background: #007bff;
     position: relative;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
     max-width: 75%;
     word-wrap: break-word;
     color: #fff;
