@@ -200,6 +200,7 @@ textarea {
 .user-message {
     background: #f0f0f0; /* Light background for user messages */
     margin-left: auto;
+    border-radius: 20px;
 }
 
 .bot-message {
