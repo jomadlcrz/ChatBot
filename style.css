@@ -664,7 +664,7 @@ pre code {
 }
 
 .dark-mode .send-btn:disabled {
-    background: #343a40;
+    background: #333;
     color: #6c757d;
 }
 
