@@ -4,12 +4,12 @@
     padding: 0;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     font-family: Arial, sans-serif;
 }
 
-/* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -29,19 +29,19 @@ body, html {
     background-color: #0056b3;
 }
 
-/* Fixed Header */
 .header {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background: #ffffff; /* Light header */
-    color: #333;
+    background: #f8f9fa;
+    color: #343a40;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header .name {
@@ -49,7 +49,6 @@ body, html {
     font-weight: bold;
 }
 
-/* Fixed Input Area */
 .input-area {
     position: fixed;
     bottom: 20px;
@@ -64,13 +63,14 @@ body, html {
     display: flex;
     align-items: flex-end;
     border-radius: 20px;
-    background: #fff; /* Light background for input */
+    background: #fff;
     padding: 8px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #ced4da;
     position: relative;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 textarea {
@@ -82,21 +82,21 @@ textarea {
     border: none;
     background: transparent;
     outline: none;
-    color: #333; /* Dark text for input */
+    color: #495057;
 }
 
 .send-btn {
     background: #007bff;
     border: none;
-    color: black;
+    color: #fff;
     padding: 8px 14px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s;
     margin-top: 8px;
-    position: relative; /* Ensure it serves as the positioning reference */
-    user-select: none; /* Prevents text selection */
+    position: relative;
+    user-select: none;
 }
 
 .send-btn:focus {
@@ -114,11 +114,11 @@ textarea {
 
 @media (hover: hover) {
     .send-btn:not(:disabled)::after {
-        content: "Send"; /* Tooltip text */
+        content: "Send";
         position: absolute;
-        top: -35px; /* Moves tooltip above the button */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Ensures perfect centering */
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
         color: white;
         padding: 5px 8px;
@@ -126,21 +126,21 @@ textarea {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition-delay: 0.5s; /* Delay before showing */
+        transition-delay: 0.5s;
         pointer-events: none;
     }
 
     .send-btn:not(:disabled):hover::after {
         opacity: 1;
-        transform: translateX(-50%) translateY(-5px); /* Smooth upward transition */
+        transform: translateX(-50%) translateY(-5px);
     }
 
     .send-btn:disabled::after {
-        content: "Message is empty"; /* Tooltip text for disabled state */
+        content: "Message is empty";
         position: absolute;
-        top: -35px; /* Moves tooltip above the button */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Ensures perfect centering */
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
         color: white;
         padding: 5px 8px;
@@ -154,14 +154,14 @@ textarea {
 
     .send-btn:disabled:hover::after {
         opacity: 1;
-        transform: translateX(-50%) translateY(-5px); /* Smooth upward transition */
+        transform: translateX(-50%) translateY(-5px);
     }
+
     .send-btn:not(:disabled):not(:hover)::after {
-        transition-delay: 0s; /* No delay for hiding */
+        transition-delay: 0s;
     }
 }
 
-/* Chat Box */
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -176,7 +176,7 @@ textarea {
     flex: 1;
     overflow-y: auto;
     padding: 15px;
-    background-color: #ffffff; /* Light background for chat */
+    background-color: #fff;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -188,6 +188,13 @@ textarea {
     word-wrap: break-word;
     white-space: pre-wrap;
     width: fit-content;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .message {
+        max-width: 85%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -197,13 +204,12 @@ textarea {
 }
 
 .user-message {
-    background: #f0f0f0; /* Light background for user messages */
+    background: #e2f3ff;
     margin-left: auto;
-    border-radius: 30px;
 }
 
 .bot-message {
-    background: none; /* Slightly darker background for bot messages */
+    background: none;
     margin-right: auto;
 }
 
@@ -250,61 +256,73 @@ textarea {
 }
 
 @keyframes shimmer {
-    0% { left: -100%; }
-    100% { left: 100%; }
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
-/* Disclaimer Footer */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
     font-size: 12px;
-    color: #777;
+    color: #6c757d;
+    background: none;
 }
 
 footer p {
     margin: 0;
 }
 
-/* Dropdown menu styling */
 .header .dropdown-toggle {
     background: transparent;
     border: none;
-    color: #333;
+    color: #343a40;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .header .dropdown-toggle:hover {
-    background: #ddd;
+    background: #e9ecef;
 }
 
 .dropdown-menu {
-    background: #fff; /* Light dropdown background */
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item {
-    color: #333;
+    color: #343a40;
     font-size: 16px;
     cursor: pointer;
 }
 
 .dropdown-item:hover {
-    background-color: #eee;
+    background-color: #f8f9fa;
+}
+
+.header-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
 }
 
 .reset-icon {
     cursor: pointer;
     font-size: 25px;
     font-weight: bold;
-    margin-left: 20px;
-    position: absolute;
-    right: 20px;
+    margin-left: 10px;
     padding: 8px;
     border-radius: 8px;
     user-select: none;
@@ -316,16 +334,16 @@ footer p {
 
 @media (pointer: coarse) {
     .reset-icon:hover {
-        color: inherit; /* Remove hover effect on touch devices */
+        color: inherit;
     }
 }
 
 @media (hover: hover) {
     .reset-icon::after {
-        content: "New chat"; /* Tooltip text */
+        content: "New chat";
         position: absolute;
-        bottom: -30px; /* Moves tooltip below the icon */
-        left: 30%;
+        bottom: -30px;
+        left: 50%;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
         color: white;
@@ -334,194 +352,34 @@ footer p {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition-delay: 0.5s; /* Delay before showing */
+        transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
     }
 
     .reset-icon:hover::after {
         opacity: 1;
-        transform: translateX(-50%) translateY(5px); /* Smooth downward transition */
+        transform: translateX(-50%) translateY(5px);
     }
+
     .reset-icon:not(:disabled):not(:hover)::after {
-        transition-delay: 0s; /* No delay for hiding */
+        transition-delay: 0s;
     }
 }
 
-/* Remove border when clicking/tapping */
-.reset-icon:focus,  
+.reset-icon:focus,
 .reset-icon:active {
     outline: none;
 }
 
-/* Error Message Styling */
-.error-message {
-    background: #ffebee;
-    color: #cc0000;
-    border-left: 5px solid #cc0000;
-    padding: 12px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-}
-
-.error-message::before {
-    content: "⚠️"; /* Triangle Exclamation */
-    font-size: 20px;
-    margin-right: 8px;
-}
-
-/* Markdown Styling */
-.markdown-body {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #e0e0e0;
-}
-
-/* Inline Code - Light Mode */
-code {
-    background-color: #ECECEC;
-    color: black; /* GitHub-style pink */
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-}
-
-/* Code Container */
-.code-container {
-    position: relative;
-    background: #ccc; /* Light background for code block */
-    border-radius: 8px;
-    margin: 1rem 0;
-    padding-top: 40px; /* Space for the label and button */
-    border: 1px solid #ccc; /* Consistent border */
-    overflow: hidden; /* Ensures border-radius is applied correctly */
-}
-
-.dark-mode .code-container {
-    background-color: #1E1E1E; /* Dark theme background */
-    border-color: #444; /* Darker border for dark mode */
-}
-
-.code-label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 8px 12px;
-    background: none; /* Light background for the label */
-    color: #333; /* Dark text for the label */
-    font-size: 0.9rem;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.dark-mode .code-label {
-    background: none; /* Dark background for the label */
-    color: #fff; /* Light text for the label */
-}
-
-.copy-code-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 8px 12px;
-    background: none; /* Light background for the button */
-    color: #333; /* Dark text for the button */
-    border: none;
-    border-top-right-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
-}
-
-.dark-mode .copy-code-btn {
-    background: none; /* Dark background for the button */
-    color: #fff; /* Light text for the button */
-}
-
-.copy-code-btn:focus,
-.copy-code-btn:active {
-    outline: none;
-}
-
-
-
-/* Syntax Highlighting (HLJS) */
-.hljs {
-    display: block;
-    padding: 12px;
-    background: #F9F9F9; /* Light background for code block */
-    color: #333; /* Light text color */
-    border-radius: 0 0 8px 8px; /* Rounded corners at the bottom */
-    overflow-x: auto;
-    border: none; /* Remove any default border */
-}
-
-.dark-mode .hljs {
-    background: #1E1E1E; /* Dark background for code block */
-    color: #e0e0e0; /* Light text color */
-}
-
-/* Customize the text color for different tokens */
-.hljs-keyword { color: #007bff; } /* Keywords */
-.hljs-comment { color: #6c757d; } /* Comments */
-.hljs-number { color: #28a745; } /* Numbers */
-.hljs-string { color: #dc3545; } /* Strings */
-.hljs-title { color: #17a2b8; } /* Titles (e.g., function names) */
-  
-  pre code {
-    display: block;
-    padding: 12px;
-    color: #fff;
-    background: #1e1e1e; /* Match container background */
-    border-radius: 0 0 8px 8px;
-    overflow-x: auto;
-  }
-/* Change background color for code blocks */
-.hljs {
-    background-color: #F9F9F9; /* Dark theme background */
-    color: black; /* Text color */
-    padding: 10px;
-    border-radius: 0 0 5px 5px;
-    display: block;
-    overflow-x: auto;
-  }
-
-  .dark-mode .hljs {
-    background-color: #2d2d2d; /* Dark theme background */
-  }
-  
-  /* Customize the text color for different tokens */
-  .hljs-keyword { color: #ff79c6; } /* Keywords */
-  .hljs-comment { color: #6272a4; } /* Comments */
-  .hljs-number { color: #bd93f9; } /* Numbers */
-  
-/* Inline Code - Dark Mode */
-.dark-mode code {
-    background-color: #424242;
-    color: white; /* GitHub-style pink */
-}
-
-
-.dark-mode pre code {
-    color: #e0e0e0 !important;
-}
-
-
-/* Dark Mode Toggle */
 #darkModeToggle {
     cursor: pointer;
     font-size: 25px;
     font-weight: bold;
-    margin-right: 20px;
-    position: absolute;
-    left: 20px;
+    margin-right: 10px;
     padding: 8px;
+    border-radius: 8px;
     user-select: none;
+    order: -1;
 }
 
 #darkModeToggle:hover {
@@ -530,7 +388,7 @@ code {
 
 @media (pointer: coarse) {
     #darkModeToggle:hover {
-        color: inherit; /* Remove hover effect on touch devices */
+        color: inherit;
     }
 }
 
@@ -540,9 +398,9 @@ code {
 
 @media (hover: hover) {
     .dark-mode-toggle::after {
-        content: "Dark"; /* Default tooltip text */
+        content: "Dark";
         position: absolute;
-        bottom: -30px; /* Moves tooltip below the button */
+        bottom: -30px;
         left: 50%;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.8);
@@ -562,11 +420,180 @@ code {
     }
 
     .dark-mode .dark-mode-toggle::after {
-        content: "Light"; /* Changes to Light when in dark mode */
+        content: "Light";
     }
 }
 
-/* WebKit Scrollbar Dark Mode */
+.error-message {
+    background: #ffebee;
+    color: #cc0000;
+    border-left: 5px solid #cc0000;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.error-message::before {
+    content: "⚠️";
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.markdown-body {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #343a40;
+}
+
+code {
+    background-color: #e9ecef;
+    color: #000;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+.code-container {
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 1rem 0;
+    padding-top: 40px;
+    border: 1px solid #ced4da;
+    overflow: hidden;
+}
+
+.dark-mode .code-container {
+    background-color: #343a40;
+    border-color: #444;
+}
+
+.code-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    color: #495057;
+    font-size: 0.9rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.dark-mode .code-label {
+    background: #343a40;
+    color: #fff;
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    color: #495057;
+    border: none;
+    border-top-right-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.dark-mode .copy-code-btn {
+    background: #343a40;
+    color: #fff;
+}
+
+.copy-code-btn:focus,
+.copy-code-btn:active {
+    outline: none;
+}
+
+.hljs {
+    display: block;
+    padding: 12px;
+    background: #fff;
+    color: #212529;
+    border-radius: 0 0 8px 8px;
+    overflow-x: auto;
+    border: 1px solid #ced4da;
+}
+
+.dark-mode .hljs {
+    background: #212529;
+    color: #e0e0e0;
+    border-color: #495057;
+}
+
+.hljs-keyword {
+    color: #007bff;
+}
+
+.hljs-comment {
+    color: #6c757d;
+}
+
+.hljs-number {
+    color: #28a745;
+}
+
+.hljs-string {
+    color: #dc3545;
+}
+
+.hljs-title {
+    color: #17a2b8;
+}
+
+pre code {
+    display: block;
+    padding: 12px;
+    color: #fff;
+    background: #1e1e1e;
+    border-radius: 0 0 8px 8px;
+    overflow-x: auto;
+}
+
+.hljs {
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    display: block;
+    overflow-x: auto;
+}
+
+.dark-mode .hljs {
+    background-color: #2d2d2d;
+}
+
+.hljs-keyword {
+    color: #ff79c6;
+}
+
+.hljs-comment {
+    color: #6272a4;
+}
+
+.hljs-number {
+    color: #bd93f9;
+}
+
+.dark-mode code {
+    background-color: #424242;
+    color: #fff;
+}
+
+.dark-mode pre code {
+    color: #e0e0e0 !important;
+}
+
 .dark-mode ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -585,16 +612,15 @@ code {
     background-color: #0056b3;
 }
 
-/* Dark Mode Styles */
 .dark-mode {
-    background-color: #181818;
+    background-color: #212529;
     color: #e0e0e0;
 }
 
-/* Dark Mode */
 .dark-mode .header {
-    background: #181818; /* Dark header */
+    background: #343a40;
     color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode .header .dropdown-toggle {
@@ -602,11 +628,11 @@ code {
 }
 
 .dark-mode .header .dropdown-toggle:hover {
-    background: #444;
+    background: #495057;
 }
 
 .dark-mode .dropdown-menu {
-    background: #333; /* Dark dropdown background */
+    background: #343a40;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -615,23 +641,22 @@ code {
 }
 
 .dark-mode .dropdown-item:hover {
-    background-color: #444;
+    background-color: #495057;
 }
 
-
 .dark-mode .input-wrapper {
-    background: #222;
-    border-color: #444;
+    background: #343a40;
+    border-color: #495057;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode textarea {
     color: #e0e0e0;
 }
 
-/* Dark Mode - Send Button */
 .dark-mode .send-btn {
     background: #007bff;
-    color: #ddd;
+    color: #fff;
 }
 
 .dark-mode .send-btn:hover {
@@ -639,23 +664,224 @@ code {
 }
 
 .dark-mode .send-btn:disabled {
-    background: #333;
-    color: #777;
+    background: #343a40;
+    color: #6c757d;
 }
 
 .dark-mode .chat-box {
-    background: #181818;
+    background: #212529;
 }
 
 .dark-mode .user-message {
-    background: #333;
+    background: #495057;
+    color: #fff;
 }
 
 .dark-mode .bot-message {
     background: none;
+    color: #fff;
 }
 
 .dark-mode footer {
     background: none;
-    color: #888;
+    color: #868e96;
+}
+
+ins {
+    background-color: #dfd;
+    color: black;
+    text-decoration: none;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+abbr {
+    font-variant: small-caps;
+    cursor: help;
+    border-bottom: 1px dotted gray;
+}
+
+.markdown-it-container {
+    border: 1px solid #ced4da;
+    padding: 10px 20px;
+    margin: 15px 0;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.markdown-it-container.warning {
+    border-color: orange;
+    background-color: #fff8e1;
+}
+
+.markdown-it-container.warning::before {
+    content: 'Warning:';
+    display: block;
+    font-weight: bold;
+    color: orange;
+    margin-bottom: 5px;
+}
+
+.dark-mode .markdown-it-container {
+    border-color: #495057;
+    background-color: #343a40;
+    color: #e0e0e0;
+}
+
+.footnote-ref {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.footnotes {
+    border-top: 1px solid #ced4da;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.dark-mode .footnotes {
+    border-top-color: #495057;
+}
+
+.footnotes ol {
+    list-style: decimal;
+    padding-left: 20px;
+}
+
+.footnotes li {
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th,
+td {
+    border: 1px solid #ced4da;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #ced4da;
+    background-color: #f8f9fa;
+    font-style: italic;
+    color: #495057;
+}
+
+.dark-mode blockquote {
+    background-color: #343a40;
+    border-left-color: #495057;
+    color: #e0e0e0;
+}
+
+.dark-mode th {
+    background-color: #495057;
+    color: #fff;
+}
+
+.dark-mode td {
+    border: 1px solid #495057;
+}
+
+@media (max-width: 992px) {
+
+    .header .name,
+    .header .dropdown-toggle {
+        font-size: 18px;
+    }
+
+    .reset-icon {
+        font-size: 22px;
+    }
+
+    #darkModeToggle {
+        font-size: 22px;
+    }
+
+    .chat-container {
+        padding-top: 50px;
+        padding-bottom: 110px;
+    }
+
+    .welcome-message {
+        font-size: 24px;
+    }
+
+    .header-actions {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .header .name,
+    .header .dropdown-toggle {
+        font-size: 16px;
+    }
+
+    .reset-icon {
+        font-size: 20px;
+    }
+
+    #darkModeToggle {
+        font-size: 20px;
+    }
+
+    .input-area {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .welcome-message {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .header .name,
+    .header .dropdown-toggle {
+        font-size: 14px;
+    }
+
+    .reset-icon {
+        font-size: 18px;
+    }
+
+    #darkModeToggle {
+        font-size: 18px;
+    }
+
+    .chat-container {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+
+    .welcome-message {
+        font-size: 20px;
+    }
+
+    .header-actions {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
 }
