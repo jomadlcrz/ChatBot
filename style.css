@@ -92,7 +92,6 @@ textarea {
     border-radius: 50%;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.3s;
     margin-top: 8px;
     position: relative;
     user-select: none;
@@ -125,7 +124,6 @@ textarea {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition-delay: 0.5s;
         pointer-events: none;
     }
 
@@ -147,17 +145,12 @@ textarea {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
     }
 
     .send-btn:disabled:hover::after {
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
-    }
-
-    .send-btn:not(:disabled):not(:hover)::after {
-        transition-delay: 0s;
     }
 }
 
@@ -351,17 +344,12 @@ footer p {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
     }
 
     .reset-icon:hover::after {
         opacity: 1;
         transform: translateX(-50%) translateY(5px);
-    }
-
-    .reset-icon:not(:disabled):not(:hover)::after {
-        transition-delay: 0s;
     }
 }
 
@@ -409,7 +397,6 @@ footer p {
         font-size: 12px;
         white-space: nowrap;
         opacity: 0;
-        transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
     }
 
@@ -501,7 +488,6 @@ code {
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s;
 }
 
 .dark-mode .copy-code-btn {
